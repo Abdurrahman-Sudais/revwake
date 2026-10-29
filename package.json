@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "test": "node --test tests/*.test.mjs",
     "build:review": "node scripts/review-preview.mjs",
-    "verify": "npm run build && npm run build:review && npm test"
+    "verify": "npm run build && npm run build:review && npm test && npm run test:backend",
+    "test:backend": "python3 backend/tests/test_lambdas.py"
   },
   "keywords": [],
   "author": "",

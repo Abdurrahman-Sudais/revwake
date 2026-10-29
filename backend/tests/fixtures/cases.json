@@ -1,0 +1,38 @@
+{
+  "_comment": "Shared impact-analysis fixtures. tests/engine.test.mjs (prototype) and backend/tests/test_lambdas.py (Lambda) must both produce these impacts and paths.",
+  "spec": {
+    "id": "SP-1", "title": "Finish", "revisions": [
+      { "rev": "A", "attrs": { "Finish": "Zinc plating", "Thickness": "8–12 µm", "Colour": "Natural" } },
+      { "rev": "B", "attrs": { "Finish": "Powder coating", "Thickness": "60–80 µm", "Colour": "Natural" } }
+    ]
+  },
+  "diff": [{ "key": "Finish", "old": "Zinc plating", "new": "Powder coating" }, { "key": "Thickness", "old": "8–12 µm", "new": "60–80 µm" }],
+  "records": [
+    { "id": "WO-1", "type": "Order", "state": "Open", "text": "Finish per SP-1.", "links": [{ "to": "SP-1", "confirmed": true }] },
+    { "id": "PO-1", "type": "Material", "state": "Open", "text": "ZINC-PLATING service.", "links": [{ "to": "WO-1", "confirmed": true }] },
+    { "id": "PO-2", "type": "Material", "state": "Open", "text": "Bolts.", "links": [{ "to": "PO-1", "confirmed": true }] },
+    { "id": "QC-1", "type": "Inspection", "state": "Open", "text": "Check 8–12 µm.", "links": [{ "to": "SP-1", "confirmed": true }] },
+    { "id": "WO-2", "type": "Order", "state": "Complete", "text": "Finish per SP-1.", "links": [{ "to": "SP-1", "confirmed": true }] },
+    { "id": "WO-3", "type": "Order", "state": "Open", "text": "Housing finish: zinc plating.", "links": [] },
+    { "id": "RT-1", "type": "Routing", "state": "Open", "text": "Send out.", "links": [{ "to": "SP-1", "confirmed": false }] },
+    { "id": "RT-2", "type": "Routing", "state": "Open", "text": "Send out.", "links": [{ "to": "WO-1", "confirmed": false }] },
+    { "id": "RT-3", "type": "Routing", "state": "Open", "text": "Send out.", "links": [{ "to": "SP-9", "confirmed": false }] },
+    { "id": "WO-4", "type": "Order", "state": "Open", "text": "Natural colour, unrelated.", "links": [] },
+    { "id": "WO-5", "type": "Order", "state": "Open", "text": "Zinc plating mentioned.", "links": [], "notDependsOn": ["SP-1"] },
+    { "id": "WO-6", "type": "Order", "state": "Open", "text": "Plating line maintenance.", "links": [] }
+  ],
+  "expected": {
+    "WO-1": { "impact": "Review required", "path": ["SP-1", "WO-1"], "stale": [] },
+    "PO-1": { "impact": "Review required", "path": ["SP-1", "WO-1", "PO-1"], "stale": ["Zinc plating"] },
+    "PO-2": { "impact": "Review required", "path": ["SP-1", "WO-1", "PO-1", "PO-2"], "stale": [] },
+    "QC-1": { "impact": "Review required", "path": ["SP-1", "QC-1"], "stale": ["8–12 µm"] },
+    "WO-2": { "impact": "Complete", "path": ["SP-1", "WO-2"], "stale": [] },
+    "WO-3": { "impact": "Mapping required", "path": null, "stale": ["Zinc plating"] },
+    "RT-1": { "impact": "Mapping required", "path": null, "stale": [] },
+    "RT-2": { "impact": "Mapping required", "path": null, "stale": [] },
+    "RT-3": { "impact": "Unaffected", "path": null, "stale": [] },
+    "WO-4": { "impact": "Unaffected", "path": null, "stale": [] },
+    "WO-5": { "impact": "Unaffected", "path": null, "stale": ["Zinc plating"] },
+    "WO-6": { "impact": "Unaffected", "path": null, "stale": [] }
+  }
+}

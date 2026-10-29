@@ -81,3 +81,12 @@ No AWS, AI, extraction, authentication, ERP or form submission backend is deploy
 ## Final packaging check
 
 Verified that optional internal QA and setup documents have no public links and are absent from the dist deployment output. QA lives only under internal/ in the source package. Redundant handover documentation was removed; setup and essential configuration notes are in README.md.
+
+
+# StudyPatch-parity revision — 29 October 2026
+
+Added: the multi-role prototype at `/app`; new home sections; a CRM-ready contact form; docs; Python Lambdas with shared fixtures; and a PostgreSQL schema with row-level-security tests. The original home demo, founders, routes, the standalone preview fix and noindex controls are unchanged. `src/review.jsx` now ignores clicks a component has already handled, so prototype links work inside the standalone file.
+
+Checks run, all passing: `npm run verify` (build, standalone preview, 19 Node tests including shared fixtures, workflow, lead validation and the three-role prototype UI loop, plus 5 Python tests). `db/test_rls.sql` against a scratch PostgreSQL 16 printed ALL CHECKS PASSED, after fixing CHECK constraints that let NULL dispositions through. Headless Chromium at desktop and phone widths on home, `/app/` and several prototype tabs showed no console errors and no horizontal overflow, and the standalone file opens and navigates the prototype; details are in the commit history.
+
+Still not claimed: screen-reader and real-device checks, live HubSpot submission, anything on AWS.
