@@ -172,7 +172,7 @@
 .pa-request:first-of-type{border-top:0;margin-top:0;padding-top:0}
 .pa-request h3{margin-top:0}
 .pa .check-label{display:flex;gap:8px;align-items:flex-start;font-size:13px}
-.pa .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.pa .sr-only{position:absolute;left:0;top:0;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 .pa .button.small{padding:11px 15px}
 .pa-status.ok{color:#2f6b4f;background:#e3eee7;border-color:#b6d1c0}
 .pa-stack span.ok,.pa-legend i.ok{background:#2f6b4f}.pa-legend i.muted{background:#b8bdb0}

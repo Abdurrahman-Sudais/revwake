@@ -64,3 +64,13 @@ Try this path: as Alex, open ECN-41 → Mapping → confirm WO-235, reject RT-12
 Logos, transparent PNGs, SVG/PNG favicons, touch icon and social image are in `public/brand/`; `/brand` provides their presentation and downloads. The included exports are ready to use. Optional regeneration: install Python 3/Cairo/CairoSVG and run `python3 scripts/brand.py`.
 
 `internal/QA.md` is optional internal handover material. It has no public route or website link and is excluded from `dist`. No other handover document is required.
+
+## Purpose & motion update
+
+- New purpose sections on the home page (`src/Purpose.jsx`, copy in `src/purpose-data.js`): a scroll-lit manifesto with Revwake’s purpose, sourced stakes, a today-vs-with-Revwake comparison, six principles, a note from the founders and a Now→Later vision timeline. “Purpose” is in the main nav.
+- Motion layer (`src/motion.js`, `src/purpose.css`): hero entrance, scroll-progress bar, blur-up reveals across every section, count-up stats with drawn bars, strike-through/tick animations, tilt-and-spotlight cards, magnetic primary buttons, hero parallax, a drawn signature and a scroll-linked timeline. Content stays visible without JavaScript; everything is static with reduced motion or where the browser lacks the needed APIs.
+- Fixed a horizontal overflow on phones caused by screen-reader-only table captions escaping their scroll container.
+
+### To confirm
+- Statistics (ASQ Cost of Quality; Journal of Cost Analysis and Parametrics) — re-check figures and links.
+- The founders’ note speaks to purpose only; edit it so it is in Femi’s and Ridwan’s own words.

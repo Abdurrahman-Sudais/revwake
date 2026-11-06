@@ -3,5 +3,8 @@ import {hydrateRoot} from 'react-dom/client';
 import App from './App.jsx';
 import './style.css';
 import './app/app.css';
+import './purpose.css';
+import {startMotion} from './motion.js';
 const path=window.location.pathname.replace(/\/$/,'')||'/';
 hydrateRoot(document.getElementById('root'),<App path={path}/>);
+requestAnimationFrame(()=>startMotion({hero:'.hero',heroVisual:'.hero-diagram'}));
